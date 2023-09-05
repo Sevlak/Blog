@@ -16,6 +16,8 @@
 #Assets
 wwwroot/
 Posts.db
+Posts.db-shm
+Posts.db-wal
 
 # Mono auto generated files
 mono_crash.*
