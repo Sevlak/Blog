@@ -1,1 +1,12 @@
 ﻿@model IEnumerable<Post>
+
+@if(Model is not null)
+{
+    @foreach (var item in Model)
+    {
+        <article class="card">
+            <h5>@Html.ActionLink(item.Title, "Post", "Blog", new {id=item.PostId})</h5>
+            <p>@item.Description</p>
+        </article>
+    }
+}

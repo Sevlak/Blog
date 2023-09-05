@@ -26,9 +26,7 @@ public class Program
 
         app.UseAuthorization();
 
-        app.MapControllerRoute(
-            name: "default",
-            pattern: "{controller=Blog}/{action=Index}/{id?}");
+        app.MapControllers();
 
         app.Run();
     }
