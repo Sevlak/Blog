@@ -4,7 +4,7 @@ namespace Site.Domain
 {
     public class Post
     {
-        public required int PostId { get; set; }
+        public int PostId { get; set; }
         public required string Title { get; set; }
         public required DateTime CreatedOn { get; set; }
         public required byte[] MarkdownFile { get; set; }

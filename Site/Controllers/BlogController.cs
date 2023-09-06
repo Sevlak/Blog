@@ -45,14 +45,27 @@ namespace Site.Controllers
 
         [HttpPost]
         [Route("Blog/Post/Create")]
-        public IActionResult Create(Post post)
+        public async Task<IActionResult> Create(PostViewModel post)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            return RedirectToAction("Create");
+            using(var ms = new MemoryStream())
+            using(var context = new PostContext())
+            {
+                await post.MarkdownFile.CopyToAsync(ms);
+                var barr = ms.ToArray();
+
+                var p = new Post { Title = post.Title, CreatedOn = DateTime.Now, MarkdownFile = barr};
+
+                context.Posts.Add(p);
+
+                await context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
