@@ -18,10 +18,24 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse">
-                    <div class="navbar-nav">
-                        <a class="nav-link" asp-area="" asp-controller="Blog" asp-action="About">About</a>
-                        <a class="nav-link" asp-area="" asp-controller="Blog" asp-action="Portfolio">Portfolio</a>
-                    </div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Blog" asp-action="About">About</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" asp-area="" asp-controller="Blog" asp-action="Portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Posts
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Blog" asp-action="Index">List</a></li>
+                                <li><a class="dropdown-item" asp-controller="Blog" asp-action="Create">Create</a></li>
+                                <li><a class="dropdown-item" asp-controller="Blog" asp-action="Edit">Edit</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
