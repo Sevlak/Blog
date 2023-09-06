@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Site.Models
+namespace Site.Domain
 {
     public class Post
     {
