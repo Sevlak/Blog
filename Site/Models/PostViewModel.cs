@@ -8,14 +8,13 @@ namespace Site.Models
         public required int PostId { get; set; }
 
         [MinLength(1)]
-        [Required]
+        [Required(ErrorMessage = "Title is required.")]
         [StringLength(50, ErrorMessage = "Title length can't be more than 50 characters.")]
         public string Title { get; set; }
 
-        [Required]
         public DateTime CreatedOn { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The MD file is required.")]
         public IFormFile MarkdownFile { get; set; }
 
         [StringLength(200, ErrorMessage = "Description can't be more than 200 characters.")]
