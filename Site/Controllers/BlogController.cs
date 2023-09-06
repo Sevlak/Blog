@@ -21,8 +21,11 @@ namespace Site.Controllers
         {
             using (var context = new PostContext())
             {
-                //TODO(will): we have a problem here. we are sending the domain objects, not the view models.
-                var model = context.Posts.AsNoTracking().ToList(); //as we are using for reading only, we don't need to track the entities
+                var model = context
+                    .Posts
+                    .AsNoTracking()  //as we are using for reading only, we don't need to track the entities
+                    .Select(p => new PostViewModel { PostId = p.PostId, Title = p.Title, CreatedOn = p.CreatedOn }) //we just need these informations
+                    .ToList();
                 return View(model);
             }
         }
@@ -42,7 +45,7 @@ namespace Site.Controllers
 
         [HttpPost]
         [Route("Blog/Post/Create")]
-        public IActionResult Create(PostViewModel post)
+        public IActionResult Create(Post post)
         {
             if (!ModelState.IsValid)
             {
